@@ -11,6 +11,7 @@ This directory contains experimental, cloud-native projects and production-grade
 | **[chaos-engineering-litmus](./chaos-engineering-litmus)** | Chaos engineering experiments | LitmusChaos, K8s |
 | **[nats-event-driven-demo](./nats-event-driven-demo)** | Event-driven microservices | Go, NATS JetStream |
 | **[golang-pubsub](./golang-pubsub)** | Real-time TUI dashboard for Pub/Sub | Go, Bubble Tea, Redis |
+| **[webassembly-series](./webassembly-series)** | 100-lesson learning series: WebAssembly with Rust & Leptos | Rust, Wasm, Leptos, Axum |
 
 ## 📖 Standards
 
