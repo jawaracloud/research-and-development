@@ -1,0 +1,51 @@
+# WebAssembly Series — Docker Compose
+# For users who prefer the CLI without VS Code.
+#
+# Usage:
+#   docker compose build          # build the image (once)
+#   docker compose run --rm dev   # open a shell with all tools
+#   docker compose run --rm dev bash scripts/verify-env.sh
+#
+# To run a lesson dev server:
+#   docker compose run --rm -p 8080:8080 dev trunk serve --address 0.0.0.0
+
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    image: wasm-series-dev:latest
+    container_name: wasm-series
+
+    # Mount the repo into the container so edits are live
+    volumes:
+      - .:/workspace
+      # Persist Cargo registry and build cache across runs
+      - cargo-registry:/usr/local/cargo/registry
+      - cargo-git:/usr/local/cargo/git
+      - build-cache:/workspace/target
+
+    working_dir: /workspace
+
+    # Keep the container interactive
+    stdin_open: true
+    tty: true
+
+    # Expose dev server ports
+    ports:
+      - "8080:8080"   # trunk (CSR lessons)
+      - "3000:3000"   # cargo-leptos (SSR lessons)
+      - "3001:3001"   # cargo-leptos livereload
+
+    # Default command: drop into a shell
+    command: bash
+
+    environment:
+      - RUST_BACKTRACE=1
+      - RUST_LOG=debug
+      - DATABASE_URL=sqlite:./dev.db
+
+volumes:
+  cargo-registry:
+  cargo-git:
+  build-cache:

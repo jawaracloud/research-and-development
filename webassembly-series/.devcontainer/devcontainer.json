@@ -1,0 +1,78 @@
+{
+  "name": "WebAssembly with Rust & Leptos",
+
+  // Build from the local Dockerfile
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+
+  // ── Port forwarding ───────────────────────────────────────────────────────
+  "forwardPorts": [
+    8080, // trunk dev server (CSR lessons 15-50)
+    3000, // cargo-leptos dev server (SSR lessons 71-100)
+    3001  // cargo-leptos livereload websocket
+  ],
+
+  "portsAttributes": {
+    "8080": { "label": "Trunk (CSR)", "onAutoForward": "openPreview" },
+    "3000": { "label": "cargo-leptos (SSR)", "onAutoForward": "openPreview" },
+    "3001": { "label": "LiveReload WS", "onAutoForward": "silent" }
+  },
+
+  // ── VS Code settings ──────────────────────────────────────────────────────
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "rust-lang.rust-analyzer",
+        "[rust]": {
+          "editor.defaultFormatter": "rust-lang.rust-analyzer"
+        },
+        "rust-analyzer.checkOnSave.command": "clippy",
+        "rust-analyzer.cargo.features": "all",
+        "rust-analyzer.procMacro.enable": true,
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "files.watcherExclude": {
+          "**/target/**": true
+        }
+      },
+      "extensions": [
+        // Rust
+        "rust-lang.rust-analyzer",
+        // TOML
+        "tamasfe.even-better-toml",
+        // LLDB debugger
+        "vadimcn.vscode-lldb",
+        // Live browser preview for Trunk
+        "ms-vscode.live-server",
+        // Markdown
+        "yzhang.markdown-all-in-one",
+        // Git
+        "eamodio.gitlens",
+        // Error lens (inline error highlighting)
+        "usernamehw.errorlens",
+        // WASM / WAT syntax highlighting
+        "dtsvet.vscode-wasm",
+        // Docker (for lesson 80)
+        "ms-azuretools.vscode-docker",
+        // Database viewer for SQLite (lesson 75)
+        "qwtel.sqlite-viewer"
+      ]
+    }
+  },
+
+  // ── Container user ────────────────────────────────────────────────────────
+  "remoteUser": "vscode",
+
+  // ── Lifecycle hooks ───────────────────────────────────────────────────────
+  "postCreateCommand": "bash /workspace/webassembly-series/scripts/verify-env.sh",
+
+  // Mount Docker socket so Docker-in-Docker works for lesson 80
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+  ],
+
+  // Run as privileged for Docker-in-Docker
+  "runArgs": ["--network=host"]
+}

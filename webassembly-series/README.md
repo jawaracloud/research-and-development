@@ -17,6 +17,82 @@ Each lesson lives in its own sub-directory with a `README.md` written using the 
 
 ---
 
+## 🛠️ Environment Setup
+
+All tools you need for every lesson are pre-configured. Pick **one** path:
+
+### Option A — VS Code Dev Container (recommended)
+
+Requires: [VS Code](https://code.visualstudio.com) + [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) + Docker Desktop.
+
+1. Clone the repo and open the `webassembly-series/` folder in VS Code.
+2. Click **"Reopen in Container"** in the notification (bottom-right).
+3. Wait ~3-5 minutes for the first build — subsequent opens are instant.
+4. A terminal inside VS Code has everything ready.
+
+Works identically on **GitHub Codespaces** — just click *Code → Open with Codespaces* on GitHub.
+
+### Option B — Nix (reproducible, no Docker needed)
+
+Requires: [Nix](https://nixos.org/download) with flakes enabled.
+
+```bash
+# One-time: enter the dev shell
+nix develop
+
+# Optional: auto-activate whenever you cd into this directory
+echo "use flake" > .envrc && direnv allow
+```
+
+### Option C — Docker Compose (CLI, no VS Code)
+
+Requires: Docker + Docker Compose.
+
+```bash
+# Build the image once (~5 min)
+docker compose build
+
+# Drop into a shell with all tools ready
+docker compose run --rm dev
+
+# Run a lesson's dev server (example: trunk on port 8080)
+docker compose run --rm -p 8080:8080 dev trunk serve --address 0.0.0.0
+```
+
+### Verify your environment
+
+Run this inside any of the three environments to confirm all tools are present:
+
+```bash
+bash scripts/verify-env.sh
+```
+
+Expected output: a table of tools with ✅ next to each one.
+
+---
+
+### What's installed
+
+| Tool | Version | Used in |
+|------|---------|---------|
+| Rust (stable) | 1.85 | All lessons |
+| `wasm32-unknown-unknown` target | — | All lessons |
+| `wasm-pack` | 0.13 | Lessons 12, 28–30 |
+| `wasm-bindgen-cli` | 0.2.100 | Lessons 13–30 |
+| `trunk` | 0.21 | Lessons 15–50 |
+| `cargo-leptos` | 0.2 | Lessons 51–100 |
+| `cargo-generate` | 0.21 | Project scaffolding |
+| `wasm-opt` (binaryen) | — | Lesson 16, 82 |
+| `wabt` (wat2wasm) | — | Lessons 3–4 |
+| `sqlx-cli` | 0.8 | Lessons 75–80 |
+| `cargo-watch` | 8.5 | All dev workflows |
+| `twiggy` | 0.7 | Lesson 82 |
+| Node.js 22 LTS | — | Lessons 83, 96 |
+| Playwright (Chromium) | latest | Lesson 83 |
+| VS Code extensions | — | rust-analyzer, CodeLLDB, TOML, Live Preview, etc. |
+
+---
+
 ## Table of Contents
 
 ### Part 1 — What Is WebAssembly? (Concepts)
