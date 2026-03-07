@@ -1,0 +1,61 @@
+{
+    "name": "eBPF in Container Environments — Go Series",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+    "forwardPorts": [
+        8080,
+        9090
+    ],
+    "portsAttributes": {
+        "8080": {
+            "label": "eBPF monitoring HTTP server",
+            "onAutoForward": "openPreview"
+        },
+        "9090": {
+            "label": "Metrics / diagnostics",
+            "onAutoForward": "silent"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "editor.formatOnSave": true,
+                "go.formatTool": "goimports",
+                "go.lintTool": "golangci-lint",
+                "go.useLanguageServer": true,
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "files.watcherExclude": {
+                    "**/vendor/**": true
+                }
+            },
+            "extensions": [
+                "golang.go",
+                "ms-vscode.cpptools",
+                "llvm-vs-code-extensions.vscode-clangd",
+                "yzhang.markdown-all-in-one",
+                "eamodio.gitlens",
+                "usernamehw.errorlens",
+                "ms-azuretools.vscode-docker"
+            ]
+        }
+    },
+    "remoteUser": "vscode",
+    "postCreateCommand": "bash /workspace/ebpf-series/scripts/verify-env.sh",
+    "mounts": [
+        "source=/sys/kernel/debug,target=/sys/kernel/debug,type=bind",
+        "source=/sys/fs/bpf,target=/sys/fs/bpf,type=bind",
+        "source=/sys/kernel/tracing,target=/sys/kernel/tracing,type=bind"
+    ],
+    "runArgs": [
+        "--privileged",
+        "--pid=host",
+        "--network=host",
+        "--cap-add=SYS_ADMIN",
+        "--cap-add=BPF",
+        "--cap-add=NET_ADMIN",
+        "--cap-add=PERFMON",
+        "--cap-add=SYS_PTRACE"
+    ]
+}

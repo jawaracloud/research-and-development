@@ -1,0 +1,38 @@
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    image: ebpf-series-dev:latest
+    container_name: ebpf-series
+
+    # eBPF requires privileged access and host PID/network namespaces
+    privileged: true
+    pid: host
+    network_mode: host
+
+    volumes:
+      - .:/workspace
+      - go-cache:/home/vscode/go/pkg/mod
+      - /sys/kernel/debug:/sys/kernel/debug:rw
+      - /sys/fs/bpf:/sys/fs/bpf:rw
+      - /sys/kernel/tracing:/sys/kernel/tracing:rw
+
+    working_dir: /workspace
+    stdin_open: true
+    tty: true
+    command: bash
+
+    cap_add:
+      - SYS_ADMIN
+      - BPF
+      - NET_ADMIN
+      - PERFMON
+      - SYS_PTRACE
+
+    environment:
+      - GOPATH=/go
+      - PATH=/usr/local/go/bin:/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+volumes:
+  go-cache:
