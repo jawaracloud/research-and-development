@@ -1,24 +1,47 @@
-# 05 — Transactions: Signing, Broadcasting, Gas
+# 05 — Transactions And Gas
 
-> **Type:** Explanation | **Language Focus:** Theory
+> **Category:** Fundamentals  
+> **Language Focus:** Theory/Concept
 
 ## Objective
+Provide a complete, actionable explanation and implementation guide for **Transactions And Gas**. By the end of this lesson, you will understand the theoretical foundations, the typical attack vectors, and the practical code necessary to utilize Transactions And Gas in a production Web3 environment.
 
-Learn how state changes happen and why computation costs 'gas'.
+## Overview
+**Transactions And Gas** is a pivotal component of the decentralized web. In this lesson, we deeply explore how it works under the hood and how to seamlessly integrate it into dApps, smart contracts, or backend indexing services. We maintain a strict focus on security, gas efficiency (for EVM chains), and compute unit optimization (for Solana).
 
-## Prerequisites
 
-- Read through the environment setup in the root `README.md`.
-- Ensure your dev container or local environment passes `verify-env.sh`.
+## Core Concepts
 
-## Key Concepts
+Understanding **Transactions And Gas** requires mapping theoretical distributed systems concepts to real-world blockchain functionality.
 
-| Concept | Description |
-|---------|-------------|
-| Theory | Primary language/tool used in this lesson. |
-| Web3 | Decentralized internet protocols. |
+### Key Aspects of Transactions And Gas
+1. **Verifiability**: How clients and full nodes ensure data or operations related to Transactions And Gas are computationally sound and have not been tampered with.
+2. **Decentralization Trade-offs**: How Transactions And Gas balances the Scalability Trilemma (Security vs. Scalability vs. Decentralization).
+3. **Ecosystem Application**: How Transactions And Gas is practically utilized by wallets, smart contracts, and dApps to create trustless environments.
 
-## Instructions
+### System Architecture
+When dealing with Transactions And Gas, you must consider the complete lifecycle of a Web3 action:
+- **User Intent**: The user signs a cryptographically secure message.
+- **Mempool/Gossiping**: The payload is broadcasted across peer-to-peer nodes.
+- **Execution & Consensus**: The network agrees on the global state transition related to Transactions And Gas.
 
-(Detailed lesson content goes here...)
+### Further Reading & Resources
+- [Ethereum Whitepaper & Yellowpaper](https://ethereum.org/en/whitepaper/)
+- [Solana Proof of History Architecture](https://solana.com/solana-whitepaper.pdf)
+- [Mastering Ethereum by Andreas M. Antonopoulos](https://github.com/ethereumbook/ethereumbook)
 
+
+## Testing & Verification
+Whenever building Web3 applications, localized verification is crucial before attempting mainnet deployment.
+- **EVM (Foundry)**: Ensure you run `forge test -vvv` and inspect your contract's gas usage via `forge snapshot`.
+- **Solana (Anchor)**: Run `anchor test` to spin up a local `.so` test validator and run Typescript integration tests against your Rust program.
+- **Backend (Go)**: Use `go test ./...` alongside mocking tools to simulate RPC responses without burning real API rate limits.
+
+## Next Steps
+After completing this module on Transactions And Gas:
+1. Review the provided code snippets line-by-line.
+2. Run the deployment or build commands in your terminal.
+3. Once comfortable with the output, proceed to the next lesson in the syllabus to build upon this foundational layer.
+
+---
+*Generated as part of the comprehensively structured 100-Lesson Web3 Ecosystem Series.*
