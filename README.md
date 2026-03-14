@@ -15,6 +15,7 @@ This directory contains experimental, cloud-native projects and production-grade
 | **[ebpf-series](./ebpf-series)** | 100-lesson eBPF in container environments series | Go 1.26, cilium/ebpf, Docker, Kubernetes |
 | **[web3-series](./web3-series)** | 100-lesson Web3 ecosystem series | Go, Rust, Solidity, IPFS, Ethereum, Solana |
 | **[chaos-engineering-series](./chaos-engineering-series)** | 100-lesson Chaos Engineering series — from first experiments to production GameDay | Go, LitmusChaos, Chaos Mesh, Toxiproxy, k6, Prometheus, Grafana |
+| **[nats-series](./nats-series)** | 100-lesson NATS series — from core messaging to global JetStream clusters | Go, NATS CLI, JetStream, Leaf Nodes, Micro, Prometheus |
 
 ## 📖 Standards
 

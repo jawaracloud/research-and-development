@@ -1,0 +1,30 @@
+{
+  "name": "nats-series",
+  "image": "mcr.microsoft.com/devcontainers/go:1.23",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
+      "version": "latest",
+      "helm": "latest"
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "golang.go",
+        "ms-azuretools.vscode-docker",
+        "redhat.vscode-yaml",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  },
+  "forwardPorts": [4222, 8222, 9090, 3000, 7777],
+  "portsAttributes": {
+    "4222": {"label": "NATS Client"},
+    "8222": {"label": "NATS Monitor"},
+    "9090": {"label": "Prometheus"},
+    "3000": {"label": "Grafana"},
+    "7777": {"label": "NATS Surveyor"}
+  }
+}
