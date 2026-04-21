@@ -1,0 +1,2 @@
+# Project Purpose
+This repository contains a collection of Bash scripts for various DevOps, cloud, and system administration purposes. The scripts cover domains such as System Monitoring & Security, Cloud & DevOps, Docker & Containers, Networking, and File & Data Management.
