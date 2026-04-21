@@ -1,25 +1,29 @@
 # Jawaracloud Research & Development
 
-This directory contains experimental, cloud-native projects and production-grade case studies. Every project here follows the **Diátaxis** documentation framework and includes real-world scenarios.
+**Jawara Cloud is a fearless platform for R&D, exploration, and trial-and-error.**
+We reject the fear of failure, embracing mistakes as the primary driver of our learning and success.
+
+This repository houses our experimental cloud-native projects and production-grade case studies, all documented using the **Diátaxis** framework.
 
 ## 🚀 Projects
 
 | Project | Description | Key Tech |
 | :--- | :--- | :--- |
-| **[waiting-room-demo](./waiting-room-demo)** | Cloudflare-style virtual waiting room | Go, DragonFlyDB, NATS |
-| **[k8s-operator-pubsub](./k8s-operator-pubsub)** | Kubernetes operator with auto-scaling | Go, Kubernetes, Redis |
-| **[nats-event-driven-demo](./nats-event-driven-demo)** | Event-driven microservices | Go, NATS JetStream |
-| **[golang-pubsub](./golang-pubsub)** | Real-time TUI dashboard for Pub/Sub | Go, Bubble Tea, Redis |
-| **[webassembly-series](./webassembly-series)** | 100-lesson learning series: WebAssembly with Rust & Leptos | Rust, Wasm, Leptos, Axum |
-| **[playwright-series](./playwright-series)** | 100-lesson UI component automation testing series | Playwright, TypeScript, Node.js |
-| **[ebpf-series](./ebpf-series)** | 100-lesson eBPF in container environments series | Go 1.26, cilium/ebpf, Docker, Kubernetes |
-| **[web3-series](./web3-series)** | 100-lesson Web3 ecosystem series | Go, Rust, Solidity, IPFS, Ethereum, Solana |
-| **[chaos-engineering-series](./chaos-engineering-series)** | 100-lesson Chaos Engineering series — from first experiments to production GameDay | Go, LitmusChaos, Chaos Mesh, Toxiproxy, k6, Prometheus, Grafana |
-| **[nats-series](./nats-series)** | 100-lesson NATS series — from core messaging to global JetStream clusters | Go, NATS CLI, JetStream, Leaf Nodes, Micro, Prometheus |
+| **[waiting-room-demo](./projects/waiting-room)** | Virtual waiting room | Go, DragonFlyDB, NATS |
+| **[k8s-operator-pubsub](./projects/k8s-operator-pubsub)** | Auto-scaling operator | Go, K8s, Redis |
+| **[nats-event-driven-demo](./projects/nats-event-driven)** | Event-driven microservices | Go, NATS JetStream |
+| **[golang-pubsub](./projects/golang-pubsub)** | Real-time TUI dashboard | Go, Bubble Tea, Redis |
+| **[bash-collections](./tools/bash-collections)** | 100+ DevOps scripts | Bash, AWS, K8s |
+| **[webassembly-series](./series/webassembly)** | 100-lesson WebAssembly guide | Rust, Wasm, Leptos, Axum |
+| **[playwright-series](./series/playwright)** | 100-lesson UI automation guide| TS, Playwright, Node.js |
+| **[ebpf-series](./series/ebpf)** | 100-lesson eBPF guide | Go, cilium/ebpf, Docker, K8s |
+| **[web3-series](./series/web3)** | 100-lesson Web3 guide | Go, Rust, Solidity, ETH, SOL |
+| **[chaos-engineering-series](./series/chaos-engineering)** | 100-lesson Chaos Engineering guide| Go, LitmusChaos, K8s |
+| **[nats-series](./series/nats)** | 100-lesson NATS guide | Go, NATS CLI, JetStream |
 
 ## 📖 Standards
 
-- **Automation-first**: All projects include Docker Compose or K8s manifests.
+- **Automation-first**: Built with Docker Compose or K8s manifests.
 - **Production-ready**: Focus on scalability, security, and observability.
 - **Documented ROI**: Each README includes a case study with quantifiable results.
 
